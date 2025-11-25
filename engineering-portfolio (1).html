@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Engineering Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s 0.2s backwards;
+        }
+
+        .hero .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s 0.4s backwards;
+        }
+
+        .hero .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects */
+        .projects {
+            background: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            background: #667eea;
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Your Name</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Engineering Excellence</h1>
+        <p>Building innovative solutions for tomorrow's challenges</p>
+        <a href="#projects" class="cta-button">View My Work</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-image">👨‍💻</div>
+            <div>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    I'm a passionate engineer with expertise in developing innovative solutions to complex problems. 
+                    With a strong foundation in engineering principles and a love for cutting-edge technology, 
+                    I specialize in creating efficient, scalable, and impactful projects.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-top: 1rem;">
+                    My approach combines technical excellence with creative problem-solving, ensuring that every 
+                    project not only meets requirements but exceeds expectations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills & Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>🔧 Engineering Design</h3>
+                <p>CAD modeling, prototyping, and system optimization</p>
+            </div>
+            <div class="skill-card">
+                <h3>💻 Programming</h3>
+                <p>Python, JavaScript, C++, MATLAB</p>
+            </div>
+            <div class="skill-card">
+                <h3>📊 Data Analysis</h3>
+                <p>Statistical modeling, machine learning, visualization</p>
+            </div>
+            <div class="skill-card">
+                <h3>⚙️ Systems Engineering</h3>
+                <p>Requirements analysis, integration, testing</p>
+            </div>
+            <div class="skill-card">
+                <h3>🤝 Project Management</h3>
+                <p>Agile methodologies, team leadership, documentation</p>
+            </div>
+            <div class="skill-card">
+                <h3>🔬 Research & Development</h3>
+                <p>Innovation, experimentation, technical writing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" onclick="openModal('project1')">
+                <div class="project-image">🚀</div>
+                <div class="project-content">
+                    <h3>Autonomous System</h3>
+                    <p>Developed an autonomous navigation system with real-time decision making capabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">AI/ML</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">ROS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project2')">
+                <div class="project-image">⚡</div>
+                <div class="project-content">
+                    <h3>Energy Optimization</h3>
+                    <p>Created an energy management system that reduced consumption by 30%.</p>
+                    <div class="project-tags">
+                        <span class="tag">IoT</span>
+                        <span class="tag">Data Analytics</span>
+                        <span class="tag">Cloud</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project3')">
+                <div class="project-image">🔬</div>
+                <div class="project-content">
+                    <h3>Materials Research</h3>
+                    <p>Researched novel composite materials with enhanced structural properties.</p>
+                    <div class="project-tags">
+                        <span class="tag">FEA</span>
+                        <span class="tag">MATLAB</span>
+                        <span class="tag">Testing</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <div class="contact-form">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScQbIIRQzEt9jMk_53ez_1aQIgx6GkoVfwJiqk8WoxzTkkVmg/viewform?embedded=true" width="100%" height="750" frameborder="0" marginheight="0" marginwidth="0" style="border-radius: 10px; max-width: 640px; margin: 0 auto; display: block;">Loading…</iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>Connect: <a href="#" style="color: #667eea;">LinkedIn</a> | <a href="#" style="color: #667eea;">GitHub</a> | <a href="#" style="color: #667eea;">Email</a></p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="projectModal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Project data
+        const projects = {
+            project1: {
+                title: "Autonomous System",
+                description: "Developed an autonomous navigation system with real-time decision making capabilities. The system utilizes advanced machine learning algorithms for obstacle detection and path planning.",
+                details: [
+                    "Implemented computer vision for environment mapping",
+                    "Developed real-time decision-making algorithms",
+                    "Achieved 95% navigation accuracy in testing",
+                    "Reduced processing time by 40% through optimization"
+                ],
+                technologies: ["Python", "TensorFlow", "ROS", "OpenCV"]
+            },
+            project2: {
+                title: "Energy Optimization",
+                description: "Created an energy management system that reduced consumption by 30%. The system monitors and optimizes energy usage across multiple systems in real-time.",
+                details: [
+                    "Deployed IoT sensors across facility",
+                    "Built predictive models for energy consumption",
+                    "Implemented automated control systems",
+                    "Achieved 30% reduction in energy costs"
+                ],
+                technologies: ["IoT", "Python", "AWS", "Data Analytics"]
+            },
+            project3: {
+                title: "Materials Research",
+                description: "Researched novel composite materials with enhanced structural properties. Conducted extensive testing and analysis to validate performance improvements.",
+                details: [
+                    "Designed and tested 50+ material compositions",
+                    "Performed finite element analysis",
+                    "Achieved 25% increase in strength-to-weight ratio",
+                    "Published findings in peer-reviewed journal"
+                ],
+                technologies: ["MATLAB", "ANSYS", "Material Testing", "FEA"]
+            }
+        };
+
+        // Modal functions
+        function openModal(projectId) {
+            const project = projects[projectId];
+            const modalContent = document.getElementById('modalContent');
+            
+            modalContent.innerHTML = `
+                <h2 style="color: #667eea; margin-bottom: 1rem;">${project.title}</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">${project.description}</p>
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">Key Achievements:</h3>
+                <ul style="margin-bottom: 1.5rem; line-height: 1.8;">
+                    ${project.details.map(detail => `<li>${detail}</li>`).join('')}
+                </ul>
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">Technologies Used:</h3>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    ${project.technologies.map(tech => `<span class="tag">${tech}</span>`).join('')}
+                </div>
+            `;
+            
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal(event) {
+            if (!event || event.target.id === 'projectModal') {
+                document.getElementById('projectModal').style.display = 'none';
+            }
+        }
+
+        // Google Form is now embedded - no custom form handling needed
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-card, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
